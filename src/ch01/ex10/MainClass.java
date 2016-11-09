@@ -1,8 +1,8 @@
 package ch01.ex10;
 
 /**
- * 質問の意味が理解できなかった。
- * 
+ * MapにunmodifiableMapをstaticで追加
+ * Listにrotateをdefaultメソッドで追加
  *
  */
 public class MainClass {
