@@ -1,4 +1,4 @@
-package ch01.ex9;
+package ch01.ex09;
 
 import java.util.Collection;
 import java.util.function.Consumer;

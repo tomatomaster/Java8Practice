@@ -13,6 +13,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import ch01.ex02.SubDirectoryViewer;
+
 public class SubDirectoryViewerTest {
 
   @Test

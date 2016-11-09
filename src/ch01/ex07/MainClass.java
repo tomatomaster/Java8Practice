@@ -1,4 +1,4 @@
-package ch01.ex7;
+package ch01.ex07;
 
 public class MainClass {
 
