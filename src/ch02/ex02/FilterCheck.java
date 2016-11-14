@@ -11,17 +11,19 @@ public class FilterCheck {
   static List<String> testData;
 
   public static void main(String[] args) {
-    testData = Arrays.asList(dataList);
-    check();
+    forTest();
   }
 
-  static void check() {
-    testData.stream().filter(w -> {
-      System.out.println("test");
-      if (w.length() > 3) {
+  public static void forTest() {
+    testData = Arrays.asList(dataList);
+    testData.stream().limit(5).filter(w -> {
+      System.out.println("==Log==");
+      if(w.length() > 2) {
         return true;
       }
-      return false;
-    }
-    ).findFirst();  }
+        return false;
+    }).forEach(System.out::println);
+  }
+  
+  
 }
