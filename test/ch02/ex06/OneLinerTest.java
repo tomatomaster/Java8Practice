@@ -11,7 +11,7 @@ public class OneLinerTest {
   
   @Test
   public void testCharacterStream() {
-    assertEquals(charArray, OneLiner.characterStream(TESTSTRING).toArray());
+    assertEquals(charArray, OneLiner.characterStream(TESTSTRING).toArray(Character[]::new));
   }
 
 }
