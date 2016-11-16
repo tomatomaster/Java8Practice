@@ -15,7 +15,7 @@ public class MainClass {
     })).run();
   }
 
-  static Runnable andThen(Runnable run1, Runnable run2) {
+  public static Runnable andThen(Runnable run1, Runnable run2) {
     run1.run();
     return run2;
   }
