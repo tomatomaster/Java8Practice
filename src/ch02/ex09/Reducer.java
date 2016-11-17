@@ -1,11 +1,8 @@
 package ch02.ex09;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Reducer {
@@ -14,7 +11,7 @@ public class Reducer {
     ArrayList<String> arrayList = new ArrayList<>();
     arrayList.add("yaruki");
     arrayList.add("genki");
-    Stream stream = Stream.of(arrayList);
+    Stream<ArrayList<String>> stream = Stream.of(arrayList);
     reducer1(stream).forEach(System.out::println);
   }
 

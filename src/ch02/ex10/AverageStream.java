@@ -1,25 +1,26 @@
 package ch02.ex10;
 
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 /**
- * countを呼ぶとストリームが閉じてしまい、ストリーム操作ができなくなるため。 
+ * countを呼ぶとストリームが閉じてしまい、ストリーム操作ができなくなるため。
  *
  */
 public class AverageStream {
 
   public static void main(String[] args) {
-    Stream<Double> stream = Stream.of(2.2,4.4,3.1);
+    Stream<Double> stream = Stream.of(2.5, 6.5, 3.0);
     double result = average(stream);
     System.out.println(result);
   }
-  
-  /**
-   * ??? できなかった
-   * @param stream
-   * @return
-   */
+
   public static double average(Stream<Double> stream) {
-    return stream.reduce(0.0, (x, y) -> x + y).doubleValue();
+    AtomicInteger atom = new AtomicInteger();
+    return stream.reduce(0.0 , (sum, target) -> {
+      atom.incrementAndGet();
+      return (sum + target);
+    }).doubleValue()/atom.get();
   }
 }
