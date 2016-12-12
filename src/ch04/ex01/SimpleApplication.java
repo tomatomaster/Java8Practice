@@ -12,63 +12,45 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-
 public class SimpleApplication extends Application {
 
 	private static int fontSize = 100;
 	private final Model model = new Model();
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
+
 	@Override
 	public void start(Stage stage) throws Exception {
-		Label message = new Label("Hello JavaFx");
-		TextField textField = new TextField();
-		
+		Label message = new Label("Bind JavaFx");
 		message.setFont(new Font(fontSize));
-		
 		message.textProperty().bind(model.valueProperty());
+		
+		TextField textField = new TextField();
 		model.valueProperty.bind(textField.textProperty());
 
 		BorderPane pane = new BorderPane();
 		pane.setTop(message);
 		pane.setBottom(textField);
-		Scene scene = new Scene(pane, 1000, 150);
+		
+		Scene scene = new Scene(pane, 1000, 150);		
 		stage.setScene(scene);
-
 		stage.setTitle("Hello");
 		stage.show();
 	}
-	
+
 	private static class Model {
 
-    private StringProperty valueProperty = null;
-    private String value;
+		private StringProperty valueProperty = null;
+		private String value;
 
-    public StringProperty valueProperty() {
-        if (Objects.isNull(valueProperty)) {
-            valueProperty = new SimpleStringProperty(value);
-        }
-        return valueProperty;
-    }
-
-    public String getValue() {
-        if (Objects.nonNull(valueProperty)) {
-            return valueProperty.get();
-        }
-        return value;
-    }
-
-    public void setValue(String value) {
-        if (Objects.nonNull(valueProperty)) {
-            valueProperty.set(value);
-        } else {
-            this.value = value;
-        }
-    }
-
-}
+		public StringProperty valueProperty() {
+			if (Objects.isNull(valueProperty)) {
+				valueProperty = new SimpleStringProperty(value);
+			}
+			return valueProperty;
+		}
+	}
 
 }
