@@ -14,43 +14,46 @@ import javafx.stage.Stage;
 
 public class SimpleApplication extends Application {
 
-	private static int fontSize = 100;
-	private final Model model = new Model();
+  private static int fontSize = 100;
+  private final Model model = new Model();
 
-	public static void main(String[] args) {
-		launch(args);
-	}
+  public static void main(String[] args) {
+    launch(args);
+  }
 
-	@Override
-	public void start(Stage stage) throws Exception {
-		Label message = new Label("Bind JavaFx");
-		message.setFont(new Font(fontSize));
-		message.textProperty().bind(model.valueProperty());
-		
-		TextField textField = new TextField();
-		model.valueProperty.bind(textField.textProperty());
+  @Override
+  public void start(Stage stage) throws Exception {
 
-		BorderPane pane = new BorderPane();
-		pane.setTop(message);
-		pane.setBottom(textField);
-		
-		Scene scene = new Scene(pane, 1000, 150);		
-		stage.setScene(scene);
-		stage.setTitle("Hello");
-		stage.show();
-	}
+    BorderPane pane = new BorderPane();
+    Scene scene = new Scene(pane, 1000, 150);
+    stage.setScene(scene);
+    stage.setTitle("Hello");
 
-	private static class Model {
+    Label message = new Label("Bind JavaFx");
+    message.setFont(new Font(fontSize));
+    message.textProperty().bind(model.valueProperty());
 
-		private StringProperty valueProperty = null;
-		private String value;
+    TextField textField = new TextField();
+    model.valueProperty.bind(textField.textProperty());
 
-		public StringProperty valueProperty() {
-			if (Objects.isNull(valueProperty)) {
-				valueProperty = new SimpleStringProperty(value);
-			}
-			return valueProperty;
-		}
-	}
+
+    pane.setTop(message);
+    pane.setBottom(textField);
+
+    stage.show();
+  }
+
+  private static class Model {
+
+    private StringProperty valueProperty = null;
+    private String value;
+
+    public StringProperty valueProperty() {
+      if (Objects.isNull(valueProperty)) {
+        valueProperty = new SimpleStringProperty(value);
+      }
+      return valueProperty;
+    }
+  }
 
 }
