@@ -38,8 +38,6 @@ public class WebBrowser extends Application {
       webEngine.load("http://google.com");
       getChildren().add(browser);
       getChildren().add(urlBar);
-      
-      
     }
     
   }
