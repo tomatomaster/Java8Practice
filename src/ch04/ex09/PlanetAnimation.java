@@ -24,28 +24,44 @@ public class PlanetAnimation extends Application {
 
   @Override
   public void start(Stage stage) throws Exception {
-    PathTransition pathTransition = new PathTransition();
-    pathTransition.setAutoReverse(true);
-    pathTransition.setCycleCount(10);
-
-    Path path = new Path();
-    path.getElements().add(new MoveTo(0f, 50f));
-    path.getElements().add(new CubicCurveTo(40f, 10f, 390f, 240f, 1904, 50f));
-    pathTransition.setPath(path);
-
-    pathTransition.setNode(earth);
     BorderPane pane = new BorderPane();
-    pane.setCenter(earth);
+    Scene scene = new Scene(pane, 1050, 1050);
 
+    
+    PathTransition pathTransition = new PathTransition();
+
+    double left = 0.0;
+    double right= 10.0;
+    double top  = 0.0;
+    double bottom = 10.0;
+
+    double halfWidth = scene.getWidth()/2;
+    double halfHeight= scene.getHeight()/2;
+    
+    double x0 = left + halfWidth; 
+    double y1 = top  + halfHeight;
+
+    double cw = 4.0 * (Math.sqrt(2.0) -1.0) * halfWidth / 3.0;
+    double ch = 4.0 * (Math.sqrt(2.0) -1.0) * halfHeight/ 3.0;
+    
+    Path path = new Path();
+    path.getElements().add(new MoveTo(0, 0));
+    path.getElements().add(new CubicCurveTo(x0 + cw, top, right, y1 - ch, right, y1));
+    path.getElements().add(new CubicCurveTo(right, y1 + ch, x0 + cw, bottom, x0, bottom));
+    path.getElements().add(new CubicCurveTo(x0 - cw, bottom, left, y1 + ch, left, y1));
+    path.getElements().add(new CubicCurveTo(left, y1 - ch, x0 - cw, top, x0, top));
+    path.getElements().add(new MoveTo(0, 0));
     pathTransition.setDuration(Duration.millis(10000));
-    pathTransition.setPath(path);
     pathTransition.setOrientation(OrientationType.ORTHOGONAL_TO_TANGENT);
     pathTransition.setCycleCount(4);
-
+    pathTransition.setAutoReverse(true);
+    pathTransition.setCycleCount(1000);
+    pathTransition.setPath(path);
+    pathTransition.setNode(earth);
 
     pathTransition.play();
-
-    Scene scene = new Scene(pane, 1050, 1050);
+    
+    pane.setCenter(earth);    
     stage.setScene(scene);
     stage.setTitle("Hello");
 
