@@ -11,11 +11,11 @@ public class ReturnFunction extends Viewer {
 
   public static void main(String[] args) throws FileNotFoundException {
     setDefaultImage();
-    setImage(readImageAndTransform(Color.BISQUE, 20));
+    setImage(readImageAndTransform(image ,Color.BISQUE, 20));
     launch(args);
   }
 
-  public static Image readImageAndTransform(Color flameColor, int flameSize)
+  public static Image readImageAndTransform(Image image, Color flameColor, int flameSize)
       throws FileNotFoundException {
     Image transformed = transform(image, (color, x, y) -> {
       int x_superior = (int) image.getWidth() - flameSize;

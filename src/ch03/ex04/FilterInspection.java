@@ -8,7 +8,7 @@ package ch03.ex04;
  * EventFilter
  * 10/45
  *
- * ない
+ * Predicate<T>に対して付加価値はない
  */
 public class FilterInspection {
 

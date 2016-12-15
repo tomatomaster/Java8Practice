@@ -23,7 +23,7 @@ public class ReturnFunction extends Viewer {
     }, 100);
   }
   
-  public static <T> Image transform(Image image, BiFunction<Color, T, Color> function,T arg) {
+  public static <T> Image transform(Image image, BiFunction<Color, T, Color> function, T arg) {
     int width = (int)image.getWidth();
     int height= (int)image.getHeight();
     WritableImage out = new WritableImage(width, height);

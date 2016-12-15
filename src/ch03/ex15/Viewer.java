@@ -68,7 +68,7 @@ public class Viewer extends Application {
     Viewer.viewer_height = viewer_height;
   }
 
-  Image getImage() {
+  public Image getImage() {
     return image;
   }
   
