@@ -2,7 +2,7 @@ package ch03.ex02;
 
 import java.util.concurrent.locks.ReentrantLock;
 
-public class MyReentrantLock {
+public class MyReentrantLock extends ReentrantLock {
   
   public static void main(String[] args) {
     MyReentrantLock myReentntrantLock = new MyReentrantLock();
