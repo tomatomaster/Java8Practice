@@ -15,11 +15,15 @@ public class TimeZoneOffSet {
   public void showAllTimeZoneOffSet() {
     System.out.println(ZoneId.systemDefault().getDisplayName(TextStyle.FULL, Locale.JAPAN) + "と各国の時刻差");
     ZoneId.getAvailableZoneIds().stream().forEach(timeZoneId -> {
-      ZoneId zoneId = ZoneId.of(timeZoneId);
-      LocalTime now = LocalTime.now();
-      LocalTime timeZone = LocalTime.now(zoneId);
-      long offSet = ChronoUnit.HOURS.between(now, timeZone);
-      System.out.printf("%s %d \n", zoneId.getDisplayName(TextStyle.FULL, Locale.JAPAN), offSet);
+      long offSet = getOffSet(timeZoneId);
+      System.out.printf("%s %d \n", ZoneId.of(timeZoneId).getDisplayName(TextStyle.FULL, Locale.JAPAN), offSet);
     });
+  }
+  
+  public long getOffSet(String timeZoneId) {
+    ZoneId zoneId = ZoneId.of(timeZoneId);
+    LocalTime now = LocalTime.now();
+    LocalTime timeZone = LocalTime.now(zoneId);
+    return ChronoUnit.HOURS.between(now, timeZone);
   }
 }
