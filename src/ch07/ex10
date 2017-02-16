@@ -1,0 +1,10 @@
+$STAGE.title = "Hello";
+$STAGE.setWidth = 500;
+$STAGE.setHeight= 500;
+var obsList = new javafx.collections.FXCollections.observableArrayList(
+                new javafx.scene.chart.PieChart("Grapefruit", 13),
+                new javafx.scene.chart.PieChart("Oranges", 25),
+                new javafx.scene.chart.PieChart.Data("Plums", 10),
+                new javafx.scene.chart.PieChart.Data("Pears", 22),
+var pieChart = new javafx.scene.chart.PieChart(obsList);
+pieChart.title = "Imported Fruits";

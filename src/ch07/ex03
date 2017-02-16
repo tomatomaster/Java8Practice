@@ -1,0 +1,7 @@
+Q：正確な値を表示するにはどうしたら良いか？
+A：toFixedを使う？
+
+jjs> var b = new java.math.BigInteger('1234567890987654321')
+jjs> b
+1234567890987654400
+jjs> b.mod(java.math.BigInteger.TEN)

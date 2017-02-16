@@ -1,0 +1,19 @@
+var output = `ls -al`
+print(output)
+var message = "Time is ${java.time.Instant.now()}"
+print(message)
+
+function pipe () {
+var args = Array.prototype.slice.call(arguments);
+var out = "";
+for(var i=0; i < args.length; i++) {
+	if(i===0) {
+	 out = $EXEC(args[i])
+	}
+	out = $EXEC(args[i], out);
+}
+return out;
+}
+
+var pipe = pipe('ls','grep -v class','sort');
+print(pipe)

@@ -1,0 +1,19 @@
+var logAdder = function() {
+    return new (Java.extend(java.util.ArrayList))
+    {
+		add: function(x) {
+		     print('Adding ' + x);
+		     return
+	     Java.super(arr).add(x)
+		}
+    }
+}
+
+var adder1 = logAdder()
+var adder2 = logAdder()
+adder1.add('test1')
+adder2.add('test2')
+
+$jjs ex05                                                                                                                                           [~/dev/javascript/NashHorn]
+Adding test1
+Adding test2

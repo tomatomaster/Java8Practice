@@ -1,0 +1,26 @@
+Q:何故下記のような結果になったのですか？
+A:https://docs.oracle.com/javase/jp/8/docs/technotes/guides/scripting/prog_guide/javascript.html
+JavaScriptの型オブジェクトは、Javaクラスと同じように使用できますが、getClass()メソッドから返されるjava.lang.Classオブジェクトとは区別されます。classおよびstaticプロパティを使用して一方からもう一方を取得できます。次の例は、この区別を示しています。
+
+var ArrayList = Java.type("java.util.ArrayList");
+var a = new ArrayList;
+
+// All of the following are true:
+print("Type acts as target of instanceof: " + (a instanceof ArrayList));
+print("Class doesn't act as target of instanceof: " + !(a instanceof a.getClass()));
+print("Type is not the same as instance's getClass(): " + (a.getClass() !== ArrayList));
+print("Type's `class` property is the same as instance's getClass(): " + (a.getClass() === ArrayList.class));
+print("Type is the same as the `static` property of the instance's getClass(): " + (a.getClass().static === ArrayList));
+このコンパイル時のクラス式と実行時のクラス・オブジェクトを区別する点で、JavaScriptとJavaコードは構文的にも意味的にも似ています。ただし、Javaではコンパイル時のクラス式がオブジェクトとして表現されることはないため、Classオブジェクトのstaticプロパティに相当するものはありません。
+
+
+jjs> 'test'.slice(2).getClass()
+class java.lang.String
+jjs> var srt = 'test'.slice(2)
+jjs> srt.getClass()
+class java.lang.String
+jjs> java.lang.String.class.cast(srt.getClass())
+java.lang.ClassCastException: Cannot cast java.lang.Class to java.lang.String
+jjs> java.lang.String.class
+class java.lang.String
+jjs>

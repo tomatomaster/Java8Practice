@@ -1,0 +1,6 @@
+#!/user/bin/jjs
+var enviroment = $ENV
+Object.keys(enviroment).forEach(function(key) {
+  var val = this[key];
+  print("Name :[${key}] Value: [${val}]");
+  }, enviroment);

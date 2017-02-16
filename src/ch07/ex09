@@ -1,0 +1,8 @@
+var age = -1;
+var isArgExists = arguments.length
+if(isArgExists === 0) {
+ age = readLine("Please input your age: ");
+} else {
+var age = "${arguments[0]}"
+}
+print("Next year, you will be " + ++age);
