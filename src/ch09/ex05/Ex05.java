@@ -10,7 +10,7 @@ public class Ex05 {
   public static void main(String[] args) throws IOException {
     Path in = Paths.get("res", "war.txt");
     Path out= Paths.get("res", "to", "out.txt");
-    writeReverse(in, out);
+    new Ex05().writeReverse(in, out);
   }
 
   /**
@@ -20,7 +20,7 @@ public class Ex05 {
    * @param to output file path
    * @throws IOException if path, in or to, not exists throw.
    */
-  public static void writeReverse(Path in, Path to) throws IOException {
+  public void writeReverse(Path in, Path to) throws IOException {
     byte[] b = Files.readAllBytes(in);
     byte[] tob = new byte[b.length];
     for(int i=0; i<b.length; i++) {

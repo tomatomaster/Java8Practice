@@ -10,12 +10,12 @@ public class Ex01 {
 
   }
 
-  public static void solve() throws IOException {
+  public void solve(String readPath, String writePath) throws IOException {
     Scanner in = null;
     PrintWriter out = null;
     try {
-      in = new Scanner(Paths.get("/s/s"));
-      out = new PrintWriter("");
+      in = new Scanner(Paths.get(readPath));
+      out = new PrintWriter(writePath);
       while (in.hasNext())
         out.println(in.next().toLowerCase());
     } finally {
